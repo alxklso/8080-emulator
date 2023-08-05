@@ -17,7 +17,34 @@ Algorithm:
 Link to 8080 opcode table: https://pastraiser.com/cpu/i8080/i8080_opcodes.html
 */
 
-int disassembler() {
+int disassembler(unsigned char *buffer, int programCounter)
+{
+    unsigned char *chunk = &buffer[programCounter]; // put pointer at beginning of buffer
+    int opbytes = 1; // default obytes, since most opcodes are one byte
+    printf("%04x", programCounter);
+
+    switch (*chunk)
+    {
+        case 0x00: printf("NOP"); break;
+        case 0x01: printf("LXI    B, #$%02x%02x", chunk[2], chunk[1]); opbytes = 3; break;
+        case 0x02: printf("STAX   B"); break; 
+        case 0x03: printf("INX    B"); break;
+        case 0x04: printf("INR    B"); break;
+        case 0x05: printf("DCR    B"); break;
+        case 0x06: printf("MVI    B, #$%02x", chunk[1]); opbytes = 2; break;
+        case 0x07: printf("RLC"); break;
+        case 0x08: printf("NOP"); break;
+        case 0x09: printf("DAD    B"); break;
+        case 0x0a: printf("LDAX   B"); break;
+        case 0x0b: printf("DCX    B"); break;
+        case 0x0c: printf("INR    C"); break;
+        case 0x0d: printf("DCR    C"); break;
+        case 0x0e: printf("MVI    C, #$%02x", chunk[1]); opbytes = 2; break;
 
 
+
+    }
+
+    printf("\n");
+    return opbytes;
 }

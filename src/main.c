@@ -1,24 +1,40 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-int main(int argc, char**argv) {
+/* DRIVER CODE */
+int main(int argc, char**argv) 
+{
     
     // File handling 
-    char file_path[] = "../files/invaders.h"; 
-    FILE *file_pointer = fopen(file_path, "r");
+    char filePath[] = "../files/invaders.h"; 
+    FILE *filePointer = fopen(filePath, "rb");
 
-    if (file_pointer == NULL) {
-        printf("ERROR: %s could not be opened.\n", file_path);
+    if (filePointer == NULL) 
+    {
+        printf("ERROR: %s could not be opened.\n", filePath);
         exit(1);
     } 
 
     // Read file contents into buffer 
-    fseek(file_pointer, 0L, SEEK_END); // Place pointer at end of file 
-    int file_size = ftell(file_pointer); // Get the location of the pointer (at the end)
-    fseek(file_pointer, 0L, SEEK_SET); // Place pointer back at start of file 
+    fseek(filePointer, 0L, SEEK_END); // Place pointer at end of file 
+    int fileSize = ftell(filePointer); // Get the location of the pointer (at the end)
+    fseek(filePointer, 0L, SEEK_SET); // Place pointer back at start of file 
 
-    printf("SUCCESS: %s could be opened (size: %d bytes).\n", file_path, file_size);
- 
+    printf("SUCCESS: %s could be opened (size: %d bytes).\n", filePath, fileSize);
+    
+    // Create buffer and load file data into it
+    unsigned char *buffer = malloc(fileSize);
+    printf("Buffer created\n");
+    fread(buffer, fileSize, 1, filePointer);
+    fclose(filePointer);
+
+    int programCounter = 0;
+    while (programCounter < fileSize) 
+    {
+        programCounter += disassembler(buffer, programCounter);
+    }
+
+    printf("Done.\n");
  
     exit(1);
 }
