@@ -261,7 +261,40 @@ int disassembler(unsigned char *buffer, int programCounter)
         case 0xdd: printf("NOP"); break;
         case 0xde: printf("SBI    #$%02x", chunk[1]); opbytes = 2; break;
         case 0xdf: printf("RST    3"); break;
+
+        case 0xe0: printf("RPO"); break;
+        case 0xe1: printf("POP    H"); break;
+        case 0xe2: printf("JPO    $%02x%02x", chunk[2], chunk[1]); opbytes = 3; break;
+        case 0xe3: printf("XTHL"); break;
+        case 0xe4: printf("CPO    $%02x%02x", chunk[2], chunk[1]); opbytes = 3; break;
+        case 0xe5: printf("PUSH   H"); break;
+        case 0xe6: printf("ANI    #$%02x", chunk[1]); opbytes = 2; break;
+        case 0xe7: printf("RST    4"); break;
+        case 0xe8: printf("RPE"); break;
+        case 0xe9: printf("PCHL"); break;
+        case 0xea: printf("JPE    $%02x%02x", chunk[2], chunk[1]); opbytes = 3; break;
+        case 0xeb: printf("XCHG"); break;
+        case 0xec: printf("CPE    $%02x%02x", chunk[2], chunk[1]); opbytes = 3; break;
+        case 0xed: printf("NOP"); break;
+        case 0xee: printf("XRI    #$%02x", chunk[1]); opbytes = 2; break;
+        case 0xef: printf("RST    5"); break;
         
+        case 0xf0: printf("RP"); break;
+        case 0xf1: printf("POP    PSW"); break;
+        case 0xf2: printf("JP    $%02x%02x", chunk[2], chunk[1]); opbytes = 3; break;
+        case 0xf3: printf("DI"); break;
+        case 0xf4: printf("CP    $%02x%02x", chunk[2], chunk[1]); opbytes = 3; break;
+        case 0xf5: printf("PUSH  PSW"); break;
+        case 0xf6: printf("ORI   #$%02x", chunk[1]); opbytes = 3; break;
+        case 0xf7: printf("RST    6"); break;
+        case 0xf8: printf("RM"); break;
+        case 0xf9: printf("SPHL"); break;
+        case 0xfa: printf("JM    $%02x%02x", chunk[2], chunk[1]); opbytes = 3; break;
+        case 0xfb: printf("EI"); break;
+        case 0xfc: printf("CM    $%02x%02x", chunk[2], chunk[1]); opbytes = 3; break;
+        case 0xfd: printf("NOP"); break;
+        case 0xfe: printf("CPI    #$%02x", chunk[1]); opbytes = 2; break;
+        case 0xff: printf("RST    7"); break;
 
     }
 
