@@ -228,6 +228,41 @@ int disassembler(unsigned char *buffer, int programCounter)
         case 0xbe: printf("CMP    M"); break;
         case 0xbf: printf("CMP    A"); break;
 
+        case 0xc0: printf("RNZ"); break;
+        case 0xc1: printf("POP    B"); break; 
+        case 0xc2: printf("JNZ    $%02x%02x", chunk[2], chunk[1]); opbytes = 3; break;
+        case 0xc3: printf("JMP    $%02x%02x", chunk[2], chunk[1]); opbytes = 3; break;
+        case 0xc4: printf("CNZ    $%02x%02x", chunk[2], chunk[1]); opbytes = 3; break;
+        case 0xc5: printf("PUSH   B"); break;
+        case 0xc6: printf("ADI    #$%02x", chunk[1]); opbytes = 2; break;
+        case 0xc7: printf("RST    0"); break;
+        case 0xc8: printf("RZ"); break;
+        case 0xc9: printf("RET"); break;
+        case 0xca: printf("JZ     $%02x%02x", chunk[2], chunk[1]); opbytes = 3; break;
+        case 0xcb: printf("NOP"); break;
+        case 0xcc: printf("CZ     $%02x%02x", chunk[2], chunk[1]); opbytes = 3; break;
+        case 0xcd: printf("CALL   $%02x%02x", chunk[2], chunk[1]); opbytes = 3; break;
+        case 0xce: printf("ACI    #$%02x", chunk[1]); opbytes = 2; break;
+        case 0xcf: printf("RST    1"); break;
+
+        case 0xd0: printf("RNC"); break;
+        case 0xd1: printf("POP    D"); break;
+        case 0xd2: printf("JNC    $%02x%02x", chunk[2], chunk[1]); opbytes = 3; break;
+        case 0xd3: printf("OUT    #$%02x", chunk[1]); opbytes = 2; break;
+        case 0xd4: printf("CNC    $%02x%02x", chunk[2], chunk[1]); opbytes = 3; break;
+        case 0xd5: printf("PUSH   D"); break;
+        case 0xd6: printf("SUI    #$%02x", chunk[1]); opbytes = 2; break;
+        case 0xd7: printf("RST    2"); break;
+        case 0xd8: printf("RC"); break;
+        case 0xd9: printf("NOP"); break;
+        case 0xda: printf("JC     $%02x%02x", chunk[2], chunk[1]); opbytes = 3; break;
+        case 0xdb: printf("IN     #$%02x", chunk[1]); opbytes = 2; break;
+        case 0xdc: printf("CC     $%02x%02x", chunk[2], chunk[1]); opbytes = 3; break;
+        case 0xdd: printf("NOP"); break;
+        case 0xde: printf("SBI    #$%02x", chunk[1]); opbytes = 2; break;
+        case 0xdf: printf("RST    3"); break;
+        
+
     }
 
     printf("\n");
