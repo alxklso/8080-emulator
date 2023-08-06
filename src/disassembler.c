@@ -76,6 +76,23 @@ int disassembler(unsigned char *buffer, int programCounter)
         case 0x2e: printf("MVI    L, #$%02x", chunk[1]); opbytes = 2; break;
         case 0x2f: printf("CMA"); break;
 
+        case 0x31: printf("LXI    SP, #$%02x%02x", chunk[2], chunk[1]); opbytes = 3; break;
+        case 0x32: printf("STA    $%02x%02x", chunk[2], chunk[1]); opbytes = 3; break;
+        case 0x33: printf("INX    SP"); break;
+        case 0x34: printf("INR    M"); break;
+        case 0x35: printf("DCR    M"); break;
+        case 0x36: printf("MVI    M, #$%02x", chunk[1]); opbytes = 2; break;
+        case 0x37: printf("STC"); break;
+        case 0x38: printf("NOP"); break;
+        case 0x39: printf("DAD    SP"); break;
+        case 0x3a: printf("LDA    $%02x%02x", chunk[2], chunk[1]); opbytes = 3; break;
+        case 0x3b: printf("DXC    SP"); break;
+        case 0x3c: printf("INR    A"); break;
+        case 0x3d: printf("DCR    A"); break;
+        case 0x3e: printf("MVI    A, #0x%02x", chunk[1]); opbytes = 2; break;
+        case 0x3f: printf("CMC"); break;
+
+
     }
 
     printf("\n");
