@@ -160,6 +160,40 @@ int disassembler(unsigned char *buffer, int programCounter)
         case 0x7e: printf("MOV    A,M"); break;
         case 0x7f: printf("MOV    A,A"); break;
 
+        case 0x80: printf("ADD    B"); break;
+        case 0x81: printf("ADD    C"); break;
+        case 0x82: printf("ADD    D"); break;
+        case 0x83: printf("ADD    E"); break;
+        case 0x84: printf("ADD    H"); break;
+        case 0x85: printf("ADD    L"); break;
+        case 0x86: printf("ADD    M"); break;
+        case 0x87: printf("ADD    A"); break;
+        case 0x88: printf("ADC    B"); break;
+        case 0x89: printf("ADC    C"); break;
+        case 0x8a: printf("ADC    D"); break;
+        case 0x8b: printf("ADC    E"); break;
+        case 0x8c: printf("ADC    H"); break;
+        case 0x8d: printf("ADC    L"); break;
+        case 0x8e: printf("ADC    M"); break;
+        case 0x8f: printf("ADC    A"); break;
+
+        case 0x90: printf("SUB    B"); break;
+        case 0x91: printf("SUB    C"); break;
+        case 0x92: printf("SUB    D"); break;
+        case 0x93: printf("SUB    E"); break;
+        case 0x94: printf("SUB    H"); break;
+        case 0x95: printf("SUB    L"); break;
+        case 0x96: printf("SUB    M"); break;
+        case 0x97: printf("SUB    A"); break;
+        case 0x98: printf("SBB    B"); break;
+        case 0x99: printf("SBB    C"); break;
+        case 0x9a: printf("SBB    D"); break;
+        case 0x9b: printf("SBB    E"); break;
+        case 0x9c: printf("SBB    H"); break;
+        case 0x9d: printf("SBB    L"); break;
+        case 0x9e: printf("SBB    M"); break;
+        case 0x9f: printf("SBB    A"); break;
+
     }
 
     printf("\n");
